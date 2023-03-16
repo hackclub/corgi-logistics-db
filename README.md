@@ -1,13 +1,14 @@
 ## The Corgi Logistics Database System!
 
+Hack Club has a robust and creative ethos of mailing things! To support this, having an easy-to-use address and mail system is key. Right now, there's no simple way of finding anyone's latest address. We're fixing this!
 This is an ongoing project to build mail infrastructure for Hack Club. 
 
 A few major goals:
-- Modular design for future expansion
-- Easy access to up-to-date addresses
-- Incorporates latest postal technologies, where possible
-- Enhance mail experience to Hack Clubbers
 - Streamline mail operations by Hack Club
+- Easy access to up-to-date addresses
+- Enhance mail experience to Hack Clubbers
+- Modular design for future expansion
+- Incorporates latest postal technologies, where possible
 
 This is a multi-component project. Here's the three key parts:
 
