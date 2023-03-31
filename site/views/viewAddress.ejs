@@ -1,0 +1,39 @@
+<title>Address Query</title>
+
+<h1>
+    Query Results for <%= query %>
+</h1>
+
+<% address.forEach(function(record){ %>
+    <div>
+        <h3>
+            <%=record.name%>
+        </h3>
+        <ul>
+            <p>Email: <%=record.email%>
+            </p>
+            <p>Phone: <%=record.phone%>
+            </p>
+            <p>Slack UID: <%=record.slack%>
+            </p>
+            <p>Club: <%=record.club%>
+            </p>
+            <p>Address Ln. 1: <%=record.addr1%>
+            </p>
+            <p>Address Ln. 2: <%=record.addr2%>
+            </p>
+            <p>City: <%=record.city%>
+            </p>
+            <p>State: <%=record.state%>
+            </p>
+            <p>Zip Code: <%=record.zip%>
+            </p>
+            <p>Country: <%=record.country%>
+            </p>
+            <p>Public Wildcards: <%=record.public_wildcard%>
+            </p>
+            <p>Private Wildcards: <%=record.private_wildcard%>
+            </p>
+        </ul>
+    </div>
+    <% }); %>

@@ -1,0 +1,33 @@
+<h3>Editing for <%= address.email %>
+</h3>
+<p>Phone <input id="phone" value=<%=address.phone %>></p>
+<p>Slack <input id="slack" value=<%=address.slack %>></p>
+<p>Name <input id="name" value=<%=address.name %>></p>
+<p>Club <input id="club" value=<%=address.club %>></p>
+<p>Addr1 <input id="addr1" value=<%=address.addr1 %>></p>
+<p>Addr2 <input id="addr2" value=<%=address.addr2 %>></p>
+<p>City <input id="city" value=<%=address.city %>></p>
+<p>State <input id="state" value=<%=address.state %>></p>
+<p>Zip <input id="zip" value=<%=address.zip %>></p>
+<p>Country <input id="country" value=<%=address.country %>></p>
+<p> <input id="public_wildcard" value=<%=address.public_wildcard %>></p>
+<p> <input id="private_wildcard" value=<%=address.private_wildcard %>></p>
+
+<button id="button" onclick="onClick()">Submit</button>
+
+<script>
+
+    function onClick() {
+        location.href = location.href + `/${document.getElementById("phone").value}/${document.getElementById("slack").value}/${document.getElementById("name").value}/${document.getElementById("club").value}/${document.getElementById("addr1").value}/${document.getElementById("addr2").value}/${document.getElementById("city").value}/${document.getElementById("state").value}/${document.getElementById("zip").value}/${document.getElementById("country").value}/${document.getElementById("public_wildcard").value}/${document.getElementById("private_wildcard").value}`;
+    }
+
+    var list = ["phone", "slack", "name", "club", "addr1", "addr2", "city", "state", "zip", "country", "public_wildcard", "private_wildcard"];
+    list.forEach(function (line) {
+        document.getElementById(line).addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("button").click();
+            }
+        });
+    });
+</script>

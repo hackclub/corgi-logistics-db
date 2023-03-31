@@ -1,0 +1,36 @@
+<h2>Authenticated with sudo access!</h2>
+
+
+
+
+<h4>Email</h4>
+<input id="inputEmail" value="">
+<button id="buttonEmail"
+    onclick="location.href= location.href + '/email/'+document.getElementById('inputEmail').value">Search by
+    Email</button>
+
+<script>
+    var input = document.getElementById("inputEmail");
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("buttonEmail").click();
+        }
+    });
+</script>
+
+<h4>Name</h4>
+<input id="inputName" value="">
+<button id="buttonName"
+    onclick="location.href= location.href + '/name/'+document.getElementById('inputName').value">Search by
+    Name</button>
+
+<script>
+    var input = document.getElementById("inputName");
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("buttonName").click();
+        }
+    });
+</script>
