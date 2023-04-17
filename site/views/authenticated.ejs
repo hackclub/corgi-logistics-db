@@ -1,12 +1,18 @@
 <h2>Authenticated with sudo access!</h2>
 
+<button id="returnHome" onclick="location.href='<%= url %>' + '/token/' + '<%= token %>' + '/add'">Add New
+    Address</button>
+<br>
+<button id="returnHome" onclick="window.open('<%= url %>' + '/token/' + '<%= token %>' + '/uploadcsv')">Batch Upload
+    (CSV)</button>
 
 
 
 <h4>Email</h4>
 <input id="inputEmail" value="">
 <button id="buttonEmail"
-    onclick="location.href= location.href + '/email/'+document.getElementById('inputEmail').value">Search by
+    onclick="location.href='<%= url %>' + '/token/' + '<%= token %>' + '/email/'+encodeURIComponent(document.getElementById('inputEmail').value)">Search
+    by
     Email</button>
 
 <script>
@@ -22,7 +28,8 @@
 <h4>Name</h4>
 <input id="inputName" value="">
 <button id="buttonName"
-    onclick="location.href= location.href + '/name/'+document.getElementById('inputName').value">Search by
+    onclick="location.href= '<%= url %>' + '/token/' + '<%= token %>' + '/name/'+encodeURIComponent(document.getElementById('inputName').value)">Search
+    by
     Name</button>
 
 <script>
