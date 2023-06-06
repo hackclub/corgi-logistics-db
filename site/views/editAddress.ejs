@@ -1,24 +1,113 @@
-<h3>Editing for <%= address.email %>
-</h3>
-<p>Phone <input id="phone" value=<%=address.phone %>></p>
-<p>Slack <input id="slack" value=<%=address.slack %>></p>
-<p>Name <input id="name" value=<%=address.name %>></p>
-<p>Club <input id="club" value=<%=address.club %>></p>
-<p>Addr1 <input id="addr1" value=<%=address.addr1 %>></p>
-<p>Addr2 <input id="addr2" value=<%=address.addr2 %>></p>
-<p>City <input id="city" value=<%=address.city %>></p>
-<p>State <input id="state" value=<%=address.state %>></p>
-<p>Zip <input id="zip" value=<%=address.zip %>></p>
-<p>Country <input id="country" value=<%=address.country %>></p>
-<p> <input id="public_wildcard" value=<%=address.public_wildcard %>></p>
-<p> <input id="private_wildcard" value=<%=address.private_wildcard %>></p>
+<style>
+    h2 {
+        font-family: Arial;
+    }
 
-<button id="button" onclick="onClick()">Submit</button>
+    p {
+        font-family: Arial;
+        color: rgb(159, 159, 159)
+    }
+
+    input[type=text] {
+        width: 20%;
+        padding: 8px 15px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+    }
+
+    input[type=text]:focus {
+        border: 3px solid #555;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 50px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #b516a5;
+    }
+
+    .button1:hover {
+        background-color: #b516a5;
+        color: white;
+    }
+
+    .buttonRet {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .submit {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+
+    .submit:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+</style>
+
+<h2>Editing for <%= address.email %>
+</h2>
+
+<button class="button button1" id="returnHome" onclick="location.href='<%= url %>' + '/token/' + '<%= token %>'">Return
+    Home</button>
+<br>
+
+
+<input type="text" id="phone" placeholder="Phone Number" value="<%=address.phone %>">
+<input type="text" id="slack" placeholder="Slack" value="<%=address.slack %>">
+<input type="text" id="club" placeholder="Club" value="<%=address.club %>">
+<br>
+<input type="text" id="name" placeholder="Name" value="<%=address.name %>">
+<br>
+<input type="text" id="addr1" placeholder="Address Line 1" value="<%=address.addr1 %>">
+<input type="text" id="addr2" placeholder="Address Line 2" value="<%=address.addr2 %>">
+<br>
+<input type="text" id="city" placeholder="City" value="<%=address.city %>">
+<input type="text" id="state" placeholder="State" value="<%=address.state %>">
+<input type="text" id="zip" placeholder="Zip" value="<%=address.zip %>">
+<br>
+<input type="text" id="country" placeholder="Country" value="<%=address.country %>">
+<br>
+<input type="text" id="public_wildcard" placeholder="Public WC: Don't use!" value="<%=address.public_wildcard %>">
+<input type="text" id="private_wildcard" placeholder="Private WC: Don't use!" value="<%=address.private_wildcard %>">
+<br>
+<button class="button submit" id="button" onclick="onClick()">Submit</button>
 
 <script>
 
     function onClick() {
-        location.href = location.href + `/${document.getElementById("phone").value}/${document.getElementById("slack").value}/${document.getElementById("name").value}/${document.getElementById("club").value}/${document.getElementById("addr1").value}/${document.getElementById("addr2").value}/${document.getElementById("city").value}/${document.getElementById("state").value}/${document.getElementById("zip").value}/${document.getElementById("country").value}/${document.getElementById("public_wildcard").value}/${document.getElementById("private_wildcard").value}`;
+        location.href = location.href + `/editing?phone=${document.getElementById("phone").value}&slack=${document.getElementById("slack").value}&name=${document.getElementById("name").value}&club=${document.getElementById("club").value}&addr1=${document.getElementById("addr1").value}&addr2=${document.getElementById("addr2").value}&city=${document.getElementById("city").value}&state=${document.getElementById("state").value}&zip=${document.getElementById("zip").value}&country=${document.getElementById("country").value}&public_wildcard=${document.getElementById("public_wildcard").value}&private_wildcard=${document.getElementById("private_wildcard").value}`;
     }
 
     var list = ["phone", "slack", "name", "club", "addr1", "addr2", "city", "state", "zip", "country", "public_wildcard", "private_wildcard"];

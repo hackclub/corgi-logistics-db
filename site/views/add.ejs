@@ -1,0 +1,126 @@
+<style>
+    h2 {
+        font-family: Arial;
+    }
+
+    p {
+        font-family: Arial;
+        color: rgb(159, 159, 159)
+    }
+
+    input[type=text] {
+        width: 25%;
+        padding: 8px 15px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+    }
+
+    input[type=text]:focus {
+        border: 3px solid #555;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 50px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #b516a5;
+    }
+
+    .button1:hover {
+        background-color: #b516a5;
+        color: white;
+    }
+
+    .buttonRet {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .returnHome {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+
+    .returnHome:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+</style>
+
+<h2>Add Address
+</h2>
+
+
+<button class="buttonRet returnHome" id="returnHome"
+    onclick="location.href='<%= url %>' + '/token/' + '<%= token %>'">Return Home</button>
+<br>
+
+<input type="text" id="email" placeholder="Email">
+<input type="text" id="phone" placeholder="Phone">
+<input type="text" id="slack" placeholder="Slack">
+<input type="text" id="club" placeholder="Club">
+<input type="text" id="name" placeholder="Name">
+<br>
+<input type="text" id="addr1" placeholder="Address Line 1">
+<input type="text" id="addr2" placeholder="Address Line 2">
+<br>
+<input type="text" id="city" placeholder="City">
+<input type="text" id="state" placeholder="State">
+<input type="text" id="zip" placeholder="Zip">
+<br>
+<input type="text" id="country" placeholder="Country">
+<br>
+<input type="text" id="public_wildcard" placeholder="Public WC: Don't Use This!">
+<input type="text" id="private_wildcard" placeholder="Private WC: Don't Use This!">
+
+<br>
+<button class="button button1" type="text" id="button" onclick="onClick()">Submit</button>
+<p>HINT: pressing enter after filling in email will automatically submit form!</p>
+<script>
+
+    function onClick() {
+        if (document.getElementById("email").value.length != 0) {
+            location.href = '<%= url %>' + '/token/' + '<%= token %>' + '/edit/' + `${document.getElementById("email").value}/editing/?phone=${encodeURIComponent(document.getElementById("phone").value)}&slack=${encodeURIComponent(document.getElementById("slack").value)}&name=${encodeURIComponent(document.getElementById("name").value)}&club=${encodeURIComponent(document.getElementById("club").value)}&addr1=${encodeURIComponent(document.getElementById("addr1").value)}&addr2=${encodeURIComponent(document.getElementById("addr2").value)}&city=${encodeURIComponent(document.getElementById("city").value)}&state=${encodeURIComponent(document.getElementById("state").value)}&zip=${encodeURIComponent(document.getElementById("zip").value)}&country=${encodeURIComponent(document.getElementById("country").value)}`
+        }
+        //location.href = location.href + `/? phone = ${ encodeURIComponent(document.getElementByID("phone").value) }& slack=${ encodeURIComponent(document.getElementByID("slack").value) }& name=${ encodeURIComponent(document.getElementByID("name").value) }& club=${ encodeURIComponent(document.getElementByID("club").value) }& addr1=${ encodeURIComponent(document.getElementByID("addr1").value) }& addr2=${ encodeURIComponent(document.getElementByID("addr2").value) }& city=${ encodeURIComponent(document.getElementByID("city").value) }& state=${ encodeURIComponent(document.getElementByID("state").value) }& zip=${ encodeURIComponent(document.getElementByID("zip").value) }& country == ${ encodeURIComponent(document.getElementByID("country").value) }`
+    }
+
+    var list = ["phone", "slack", "name", "club", "addr1", "addr2", "city", "state", "zip", "country", "public_wildcard", "private_wildcard"];
+    list.forEach(function (line) {
+        document.getElementById(line).addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("button").click();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload CSV</title>
+</head>
+
+<style>
+    p {
+        font-family: Arial
+    }
+
+
+
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .choose {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+
+    .choose:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+
+    .upload {
+        background-color: white;
+        color: black;
+        border: 2px solid #f44336;
+    }
+
+    .upload:hover {
+        background-color: #f44336;
+        color: white;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+
+<p>File must be a spreadsheet in CSV format, parse in following order:
+    Email,UID,name
+    Fields can be optional, preferably put either email or UID if known.
+</p>
+
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Slack UID</th>
+        <th>Name</th>
+    </tr>
+    <tr>
+        <td>mafia@corgis.co</td>
+        <td>U01XXXXXXXX</td>
+        <td>HQ of the Corgi Mafia</td>
+    </tr>
+    <tr>
+        <td>dinobox@hackclub.com</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>U02YYYYYYYY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>The Best Doggo</td>
+    </tr>
+</table>
+
+<p>Search will prioritize parameters in the order of email, slack UID, and name. Note: a query by name may result in
+    multiple records, in which case results will be routed to the error file.</p>
+
+<body>
+    <form action='/uploadfile' enctype="multipart/form-data" method="POST" target="_blank">
+        <input class="button choose" type="file" name="file" />
+        <input name="token" id="token" value='<%=token%>' />
+        <br>
+        <input class="button upload" type="submit" value="Upload a file" />
+    </form>
+
+</body>
+
+</html>
