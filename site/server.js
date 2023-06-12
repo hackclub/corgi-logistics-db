@@ -424,6 +424,26 @@ slackApp.view('address-modal', async ({ ack, body, view, client, logger }) => {
         country: address.country.value.value
     });
 
+    try {
+        // Call chat.postMessage with the built-in client
+        const result = await client.chat.postMessage({
+            channel: slackUID,
+            text: `
+We got your address! Here's what we have for you now:
+\`\`\`
+${address.name.value.value}
+${address.addr1.value.value}
+${address.addr2.value.value}
+${address.city.value.value}, ${address.state.value.value}  ${address.zip.value.value}
+${address.country.value.value}
+\`\`\`
+            `
+        });
+        logger.info(result);
+    }
+    catch (error) {
+        logger.error(error);
+    }
 });
 
 slackApp.command('/nodemaster', async ({ ack, body, command, client, logger, say }) => {
