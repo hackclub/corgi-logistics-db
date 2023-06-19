@@ -3,6 +3,7 @@
     "@slack/bolt": "^3.13.0",
     "@slack/web-api": "^6.8.1",
     "@supabase/supabase-js": "^2.10.0",
+    "airtable": "^0.12.1",
     "crypto-js": "^4.1.1",
     "csv-parse": "^5.3.6",
     "csv-stringify": "^6.3.0",
