@@ -1,6 +1,8 @@
 supabase = require('@supabase/supabase-js');
 require('dotenv').config();
 
+var Airtable = require('airtable');
+
 module.exports = class Client {
     constructor(supabaseURL, supabaseKey, expiryTime) {
         const client = supabase.createClient(supabaseURL, supabaseKey);
@@ -8,6 +10,17 @@ module.exports = class Client {
 
         // expiryTime: ms before a token expires
         this.expiryTime = expiryTime;
+
+        var base = new Airtable({ apiKey: process.env.AIRTABLE_TOKEN }).base(process.env.AIRTABLE_BASE_ID);
+        this.base = base;
+    }
+
+    checkEmpty(value) {
+        if (value === null || value === undefined) {
+            value = ' ';
+        }
+
+        return value
     }
 
     /*
@@ -413,6 +426,47 @@ module.exports = class Client {
         const addressData = await query();
 
         if (addressData["data"].length == 0) {
+            var records = await this.base('People').select({
+                // Selecting the first 3 records in Grid view:
+                maxRecords: 100000,
+                view: "Everything",
+                filterByFormula: `{Slack ID} = "${UID}"`
+            }).all();
+
+
+            if (records.length != 0) {
+
+                console.log(records);
+
+                var record = records[0];
+
+
+
+                var address = {
+                    email: record.get("Email"),
+                    phone: record.get("Phone number"),
+                    slack: record.get("Slack ID"),
+                    name: record.get("Full Name"),
+                    club: record.get("Club Name"),
+                    addr1: record.get("Address (first line)"),
+                    addr2: record.get("Address (second line)"),
+                    city: record.get("Address (city)"),
+                    state: record.get("Address (state)"),
+                    zip: record.get("Address (zip code)"),
+                    country: record.get("Address (country)"),
+                }
+
+                for (const [key, value] of Object.entries(address)) {
+                    address[key] = this.checkEmpty(value);
+                }
+
+                this.updateSudoAddressUID(address.slack, address);
+
+                return {
+                    data: [address]
+                }
+            }
+
             return {
                 error: "no uid found",
                 data: {

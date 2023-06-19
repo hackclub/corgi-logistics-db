@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 8080
 require('dotenv').config();
+var Airtable = require('airtable');
 
 const multer = require('multer');
 const fs = require("fs");
