@@ -1,1 +1,57 @@
-<h4>No Results. Go back?</h4>
+
+<style>
+    h2 {
+        font-family: Arial;
+    }
+
+
+    input[type=text] {
+        width: 20%;
+        padding: 8px 15px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+    }
+
+    input[type=text]:focus {
+        border: 3px solid #555;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 50px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #b516a5;
+    }
+
+    .button1:hover {
+        background-color: #b516a5;
+        color: white;
+    }
+
+
+</style>
+
+<h2>No Results. Go back?</h2>
+
+
+<button class="button button1" id="returnHome" onclick="location.href='<%= url %>' + '/token/' + '<%= token %>'">Return
+    Home</button>
+<br>

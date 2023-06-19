@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const port = 8080
+const express = require('express');
+const app = express();
+const port = 8080;
 require('dotenv').config();
 var Airtable = require('airtable');
 
@@ -209,6 +209,8 @@ app.get('/token/:token/email/:email', (req, res) => {
                     address.data.forEach(function () { });
                 } catch (error) {
                     res.render('../site/views/noResults', {
+                        url: process.env.SITE_URL,
+                        token: req.params.token
                     });
                     return
                 }
@@ -303,6 +305,8 @@ app.get('/token/:token/name/:name', (req, res) => {
                 } catch (error) {
                     console.log(error, "\n\n\n test \n\n\n")
                     res.render('../site/views/noResults', {
+                        url: process.env.SITE_URL,
+                        token: req.params.token
                     });
                     return
                 }
